@@ -15,7 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
 class MainActivity : ComponentActivity() {
-
+    var tiempoInicio =0L
     private companion object {
         private const val TAG = "Estado"
     }
@@ -35,38 +35,60 @@ class MainActivity : ComponentActivity() {
         }
         Log.d(TAG, "onCreate()")
     }
-
     override fun onStart() {
         super.onStart()
-        Log.d(TAG, "onStart()")
+
+
+        tiempoInicio = System.currentTimeMillis()
+
+
+        Log.d("Estado", "onStart")
     }
+
 
     override fun onResume() {
         super.onResume()
-        Log.d(TAG, "onResume()")
+
+
+        tiempoInicio = System.currentTimeMillis()
+
+
+        Log.d("Estado", "onResume")
     }
+
 
     override fun onPause() {
         super.onPause()
-        Log.d(TAG, "onPause()")
+
+
+        val tiempoFinal = System.currentTimeMillis()
+        val duracion = (tiempoFinal - tiempoInicio) /
+                1000.0
+        Log.d("Estado", "onPause: $duracion segundos en ejecucion")
     }
+
 
     override fun onStop() {
         super.onStop()
-        Log.d(TAG, "onStop()")
+
+
+        val tiempoFinal = System.currentTimeMillis()
+        val duracion = (tiempoFinal - tiempoInicio) /
+                1000.0
+        Log.d("Estado", "onStop: $duracion segundos")
     }
 
-    override fun onRestart() {
-        super.onRestart()
-        Log.d(TAG, "onRestart()")
-    }
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.d(TAG, "onDestroy()")
+
+
+        val tiempoFinal = System.currentTimeMillis()
+        val duracion = (tiempoFinal - tiempoInicio) /
+                1000.0
+        Log.d("Estado", "onDestroy: $duracion segundos")
     }
 }
-//acabado
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
