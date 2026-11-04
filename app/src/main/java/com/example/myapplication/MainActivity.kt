@@ -66,7 +66,7 @@ class MainActivity : ComponentActivity() {
         Log.d(TAG, "onDestroy()")
     }
 }
-
+//acabado
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
